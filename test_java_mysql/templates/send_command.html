@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block page_content %}
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>
+{#
+      $(document).ready(function() {
+        var refresh_id = setInterval(function() {
+            $.get(
+              "{{ url_for('thread_status') }}",
+              function(data) {
+                console.log(data);
+                if (data.status == 'finished') {
+                  window.location.replace("{{ url_for('result') }}");
+                }
+              }
+            )}
+          , 1000);
+      });
+#}
+      $(document).ready(function(){              
+       // вешаем на клик по элементу с id = example-1
+      $('#commit').click(function(){
+        // загрузку HTML кода из файла example.html
+      $(this).load('/result_job.html');
+    }) 
+}); 
+    </script>
+<form method = "POST">
+   {{ form.csrf_token }}
+   <p>{{form.ipaddress.label}} {{form.ipaddress}} </p>
+        {% for error in form.errors.ipaddress %}
+{#           <li>Error in  {{error}} </li>}   #}
+         <span style="color:red;">{{error}}</span>
+        {% endfor  %}
+   <p>{{form.command.label}} {{form.command}} </p>
+        {% for error in form.errors.command %}
+           <li>Error in  {{error}} </li>
+        {% endfor  %}
+   <p>{{form.commit}}</p>
+
+                {% if result_command: %}
+                    <pre> {{result_command}} </pre>
+                {% endif %}
+
+{% endblock%}

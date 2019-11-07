@@ -1,0 +1,26 @@
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+{% extends 'bootstrap/base.html' %}
+{% block title %}This is an example page{% endblock %}
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+  <!-- ... -->
+          <li> <a href="{{ url_for('page') }}">Home</a> </li>
+          <li> <a href="{{ url_for('devices') }}">Device</a> </li>
+          <li> <a href="{{ url_for('all_devices') }}">All Device</a> </li>
+          <li> <a href="{{ url_for('ping_host') }}">Ping host</a> </li>
+          <li> <a href="{{ url_for('send_command') }}">Send_Command</a> </li>
+</div>
+{% endblock %}
+
+{% block content %}
+<!--  <h1>Hello, Bootstrap</h1> -->
+  <div class="container">
+            {% for message in get_flashed_messages() %}
+            <div class="alert alert-info" role="alert">{{ message }}</div>
+            {% endfor %}
+       {% block page_content%}{% endblock%}
+  </div>
+{% endblock %}

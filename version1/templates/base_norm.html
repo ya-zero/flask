@@ -1,0 +1,25 @@
+{% extends 'bootstrap/base.html' %}
+{% block title %}This is an example page{% endblock %}
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+  <!-- ... -->
+  <div class="container">
+      <a class="navbar-brand" href="{{ url_for('page') }}">Home</a>
+
+      <ul class="nav navbar-nav">
+          <li> <a href="{{ url_for('devices') }}">Device</a> </li>
+          <li> <a href="{{ url_for('all_devices') }}">All Device</a> </li>
+          <li> <a href="{{ url_for('ping_host') }}">Ping host</a> </li>
+          <li> <a href="{{ url_for('send_command') }}">Send_Command</a> </li>
+      </ul>
+
+   </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<!--  <h1>Hello, Bootstrap</h1> -->
+  <div class="container">
+       {% block page_content%}{% endblock%}
+  </div>
+{% endblock %}

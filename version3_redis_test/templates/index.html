@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block page_content %}
+<h2> Hello </h2>
+{{messages}}
+
+{% for i in sql %}
+<br>   {{i}}
+{% endfor %}
+{% endblock %}

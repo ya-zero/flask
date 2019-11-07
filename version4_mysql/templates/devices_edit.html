@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block page_content %}
+<p><h2> Редактирование устройства</h2> </p>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.boot.label }}<br>
+            {{ form.boot(size=32,value=device['boot']) }} <br>
+            {% for error in form.boot.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.hardware.label }}<br>
+            {{ form.hardware(size=32,value=device['hardware'],disabled=True) }}<br>
+            {% for error in form.hardware.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+<table>
+<tr>
+<th>{{ form.ip.label }} </th>
+<th> Список свободных ip адресов</th>
+</tr>
+<tr>
+<td> {{ form.ip(size=32,value=device['INET_NTOA(ip_address.ip)']) }}
+     {% for error in form.ip.errors %}
+     <span style="color: red;">[{{ error }}]</span>
+     {% endfor %}
+</td>
+<td>
+ {{ form.test}}
+</td>
+</tr>
+</table>
+        </p>
+
+        <p>
+            {{ form.mac.label }}<br>
+            {{ form.mac(size=32,value=device['mac'],disabled=True) }}<br>
+            {% for error in form.mac.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.model.label }}<br>
+            {{ form.model(size=32,value=device['name'],disabled=True) }}<br>
+            {% for error in form.model.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.serial.label }}<br>
+            {{ form.serial(size=32,value=device['serial_number'],disabled=True) }}<br>
+            {% for error in form.serial.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.software.label }}<br>
+            {{ form.software(size=32,value=device['software_version']) }}<br>
+            {% for error in form.software.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+{#
+        <p>
+            {{ form.test.label }}<br>
+            {{ form.test}}<br>
+            {% for error in form.test.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+#}
+
+        <p>{{ form.commit }}</p>
+    </form>
+
+{% endblock%}
+
+
+
+
+

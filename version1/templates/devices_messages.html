@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block page_content %}
+
+
+<form method = "POST">
+   {{ form.csrf_token }}
+
+   <p>{{form.ipaddress.label}} {{form.ipaddress}} </p>
+{#   <p>{{form.command.label}} {{form.command}} </p>  #}
+   <p>{{form.commit}}</p>
+
+
+       {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+
+        {% for message in messages %}
+            {% if "Error" not in message[1]: %}
+                <div class="alert alert-info">
+{#                <strong> host found #}
+<table border="1" class="table">
+  <tr>
+    <th style="background-color: red">Boot</th>
+    <th style="background-color: yellow">Hardware</th>
+    <th>Ip</th>
+    <th>Mac</th>
+    <th>Model</th>
+    <th>Serial</th>
+    <th>Software</th>
+   </tr>
+{% if dev:%}
+                   <tr>
+                   <td>{{dev['Boot']}}</td>
+                   <td>{{dev['Hardware']}}</td>
+                   <td>{{dev['Ip']}}</td>
+                   <td>{{dev['Mac']}}</td>
+                   <td>{{dev['Model']}}</td>
+                   <td>{{dev['Serial']}}</td>
+                   <td>{{dev['Software']}}</td>
+
+                   </tr>
+{% endif %}
+                 </table>
+                </div>
+            {% endif %}
+
+            {% if "Error" in message[1]: %}
+                <div class="alert alert-warning">
+                {{ message[1] }}
+                </div>
+            {% endif %}
+        {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+
+{% endblock%}
+
+
+
+
+

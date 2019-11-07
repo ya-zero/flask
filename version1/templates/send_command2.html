@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block page_content %}
+<form method = "post">
+   {{ form.csrf_token }}
+   <p>{{ form.ipaddress.label }} {{ form.ipaddress }} </p>
+   <p>{{ form.command.label }} {{ form.command }} </p>
+   <p>{{ form.commit }}</p>
+{% endblock %}

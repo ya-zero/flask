@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block page_content %}
+<form method = "POST">
+   {{ form.csrf_token }}
+   <p>{{form.ipaddress.label}} {{form.ipaddress}} </p>
+        {% for error in form.errors.ipaddress %}
+{#           <li>Error in  {{error}} </li>}   #}
+         <span style="color:red;">{{error}}</span>
+        {% endfor  %}
+   <p>{{form.commit}}</p>
+
+
+{% endblock%}

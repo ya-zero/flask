@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block page_content %}
+<h2>Поиск устройства </h2>
+<form method = "POST">
+   {{ form.csrf_token }}
+
+   <p> {{form.ipaddress.label}} {{form.ipaddress(size=30,placeholder="Mac | Ip | Вендор | Модель")}} </p>
+   <p>{{form.ipaddress.description}}
+   <p>{{form.commit}}</p>
+
+{% endblock%}
+
+
+
+
+

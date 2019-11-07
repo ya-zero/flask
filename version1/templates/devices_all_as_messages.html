@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block page_content %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+
+        {% for message in messages %}
+            {% if "Error" not in message[1]: %}
+                <div class="alert alert-info">
+<table border="1" class="table">
+  <tr>
+    <th style="background-color: red">Boot</th>
+    <th style="background-color: yellow">Hardware</th>
+    <th>Ip</th>
+    <th>Mac</th>
+    <th>Model</th>
+    <th>Serial</th>
+    <th>Software</th>
+   </tr>
+{% for dev in devices:%}
+                   <tr>
+                   <td>{{dev['Boot']}}</td>
+                   <td>{{dev['Hardware']}}</td>
+                   <td>{{dev['Ip']}}</td>
+                   <td>{{dev['Mac']}}</td>
+                   <td>{{dev['Model']}}</td>
+                   <td>{{dev['Serial']}}</td>
+                   <td>{{dev['Software']}}</td>
+                   </tr>
+{% endfor %}
+                 </table>
+                </div>
+
+            {% endif %}
+
+            {% if "Error" in message[1]: %}
+                <div class="alert alert-warning">
+                {{ message[1] }}
+                </div>
+            {% endif %}
+        {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+
+{% endblock%}
+
+
+
+
+

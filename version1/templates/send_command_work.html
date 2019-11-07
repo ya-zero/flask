@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block page_content %}
+<form method = "POST">
+   {{ form.csrf_token }}
+   <p>{{form.ipaddress.label}} {{form.ipaddress}} </p>
+        {% for error in form.errors.ipaddress %}
+{#           <li>Error in  {{error}} </li>}   #}
+         <span style="color:red;">{{error}}</span>
+        {% endfor  %}
+   <p>{{form.command.label}} {{form.command}} </p>
+        {% for error in form.errors.command %}
+           <li>Error in  {{error}} </li>
+        {% endfor  %}
+   <p>{{form.commit}}</p>
+
+       {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+ 
+        {% for message in messages %}
+            {% if "Error" not in message[1]: %}
+                <div class="alert alert-info">
+                <strong>Ping to {{ form.ipaddress.data }} </strong> {{ message[1] }}
+                {% if result_command: %}
+                    <pre> {{result_command}} </pre>
+{#
+                {% for i in result_command.split('\n'): %}
+                   <br>
+                   <strong>{{i}}</strong>
+                {% endfor %}
+#}
+                {% endif %}
+
+                </div>
+            {% endif %}
+ 
+            {% if "Error" in message[1]: %}
+                <div class="alert alert-warning">
+                {{ message[1] }}
+                </div>
+            {% endif %}
+        {% endfor %}
+            {% endif %}
+        {% endwith %}
+{% endblock%}

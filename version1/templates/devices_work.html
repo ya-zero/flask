@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block page_content %}
+
+
+<form method = "POST">
+   {{ form.csrf_token }}
+
+   <p>{{form.ipaddress.label}} {{form.ipaddress}} </p>
+{#   <p>{{form.command.label}} {{form.command}} </p>  #}
+   <p>{{form.commit}}</p>
+{% if dev:%}
+<table border="1" class="table">
+  <tr>
+    <th style="background-color: red">Boot</th>
+    <th style="background-color: yellow">Hardware</th>
+    <th>Ip</th>
+    <th>Mac</th>
+    <th>Model</th>
+    <th>Serial</th>
+    <th>Software</th>
+   </tr>
+
+                   <tr>
+                   <td>{{dev['Boot']}}</td>
+                   <td>{{dev['Hardware']}}</td>
+                   <td>{{dev['Ip']}}</td>
+                   <td>{{dev['Mac']}}</td>
+                   <td>{{dev['Model']}}</td>
+                   <td>{{dev['Serial']}}</td>
+                   <td>{{dev['Software']}}</td>
+
+                   </tr>
+
+                 </table>
+{% endif %}
+{% endblock%}
+
+
+
+
+

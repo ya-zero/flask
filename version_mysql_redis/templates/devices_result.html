@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block page_content %}
+<h2>Надено устройств</h2>
+{% if device:%}
+<table border="1" class="table table-hover">
+ <thead class="table-dark">
+  <tr>
+    <th> Boot</th>
+    <th> Hardware</th>
+    <th> Ip</th>
+    <th> Mac</th>
+    <th> Model</th>
+    <th> Serial</th>
+    <th> Software</th>
+    <th> </th>
+   </tr>
+ </thead>
+ <tbody>
+{% for dev in device %}
+                   <tr class="table-secondary">
+                   <td>{{dev['boot']}}</td>
+                   <td>{{dev['hardware']}}</td>
+                   <td>{{dev['INET_NTOA(ip_address.ip)']}}</td>
+                   <td>{{dev['mac']}}</td>
+                   <td>{{dev['name']}}</td>
+                   <td>{{dev['serial_number']}}</td>
+                   <td>{{dev['software_version']}}</td>
+                   <td><a href="{{ url_for('update_string',dev=dev['id']) }}"> Edit</a> </td>
+                   </tr>
+{% endfor %}
+ </tbody>
+                 </table>
+{% endif %}
+{% endblock%}
+
+
+
+
+

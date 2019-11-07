@@ -1,0 +1,15 @@
+.parent {
+  background:white;
+  margin: 20px;
+  position: relative;
+  height: 800px;
+}
+
+.center {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}

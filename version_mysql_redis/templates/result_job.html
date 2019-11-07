@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block page_content %}
+
+ {% if result %}
+     <pre>{{result}}</pre>
+ {% else %}
+<head>
+<meta http-equiv = "refresh" content = "5">
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/style_img.css')}}">
+</head>
+
+<div class="parent">
+  <img class="center" src="{{url_for('static',filename='progress.gif')}}">
+</div>
+
+ {% endif %}
+
+
+{% endblock %}
+

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block page_content %}
+{#
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+#}
+<table border="1" class="table table-hover">
+  <thead>
+  <tr>
+{#    <th style="background-color: red">Boot</th>
+    <th style="background-color: yellow">Hardware</th>
+#}
+    <th>Boot</th>
+    <th>Hardware</th>
+    <th>Ip</th>
+    <th>Mac</th>
+    <th>Model</th>
+    <th>Serial</th>
+    <th>Software</th>
+   </tr>
+  </thead>
+  <tbody>
+{% for dev in devices:%}
+
+
+                   <tr>
+                   <td>{{dev['Boot']}}</td>
+                   <td>{{dev['Hardware']}}</td>
+                   <td>{{dev['Ip']}}</td>
+                   <td>{{dev['Mac']}}</td>
+                   <td>{{dev['Model']}}</td>
+                   <td>{{dev['Serial']}}</td>
+                   <td>{{dev['Software']}}</td>
+                   </tr>
+{% endfor %}
+  </tbody>
+                 </table>
+
+
+{% endblock%}
+
+
+
+
+

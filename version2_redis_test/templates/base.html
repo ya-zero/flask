@@ -1,0 +1,24 @@
+{% extends 'bootstrap/base.html' %}
+{% block title %}This is an example page{% endblock %}
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+  <!-- ... -->
+  <div class="container">
+      <ul class="nav navbar-nav">
+          <li> <a href="{{ url_for('redis_send_command') }}">Send_Command</a> </li>
+          <li> <a href="{{ url_for('run_task') }}">run_task</a> </li>
+      </ul>
+
+   </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<!--  <h1>Hello, Bootstrap</h1> -->
+  <div class="container">
+            {% for message in get_flashed_messages() %}
+            <div class="alert alert-info" role="alert">{{ message }}</div>
+            {% endfor %}
+       {% block page_content%}{% endblock%}
+  </div>
+{% endblock %}

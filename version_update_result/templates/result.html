@@ -1,0 +1,19 @@
+{#
+{% extends "layout.html" %}
+#}
+{% block body %}
+<body>
+{% if result %}
+{{result.is_finished}}
+{{result_id}}
+
+<pre>{{result.result}} </pre>
+
+  {% for line in result %}
+    {{ line }}
+  {% endfor %}
+
+{% endif %}
+
+</body>
+{% endblock %}
